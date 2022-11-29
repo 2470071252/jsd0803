@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {{info}}<br>
+    <!--属性绑定简写-->
+    <input type="text" :value="info">
+    <!--属性绑定复杂版，如果没有安装Vue插件会报错，在错误上alt+enter处理-->
+    <input type="text" v-bind:value="info">
+    <a :href="url"><img :src="imgName" alt=""></a>
+
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            info:"属性绑定测试",
+            url:"http://www.youtube.com",
+            imgName:"a.jpg",
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Axios</title>
+</head>
+<body>
+<h1>异步请求测试</h1>
+<div>
+  {{info}}
+  <input type="button" value="异步get请求" @click="f1()">
+  <input type="button" value="异步post请求" @click="f2()">
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+              info:"异步测试",
+            },
+            methods:{
+                f1(){
+                  // 发出异步请求 response代表响应对象，里面装着服务器响应的数据
+                  // axios.get("/helloAxios").then(function (response) {
+                  axios.get("/helloGet?info=abc&age=18").then(function (response) {
+                      // response.data代表服务器响应的数据
+                      // alert(response.data);
+                      // 把服务器的响应内容赋值给info
+                      v.info = response.data;
+                  })
+                },
+                f2(){
+                    // 传递多个参数，需要将多个参数封装到到一个自定义对象中
+                    let p = {title:"手机",price:4000,num:56};
+                    // 发出异步post请求
+                  // axios.post("/helloAxios").then(function (response) {
+                    axios.post("/helloPost",p).then(function (response) {
+                      alert(response.data);
+                  })
+                },
+
+            }
+          }
+  )
+</script>
+</body>
+</html>

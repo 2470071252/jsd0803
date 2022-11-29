@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<input type="button" value="添加h1" onclick="add_h1()">
+<input type="button" value="添加图片" onclick="add_img()">
+
+<script>
+    let i = document.querySelector("input");
+    function add_h1() {
+        let h1 = document.createElement("h1")
+        h1.innerText = i.value;
+        // 添加到页面中
+        document.body.append(h1);
+    }
+    function add_img() {
+        let img = document.createElement('img');
+        img.src=i.value;
+        document.body.append(img)
+    }
+</script>
+</body>
+</html>

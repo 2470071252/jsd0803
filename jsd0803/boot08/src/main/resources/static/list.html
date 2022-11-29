@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+</head>
+<body>
+<div>
+  <table border="1">
+    <caption>商品列表</caption>
+    <tr>
+      <th>id</th>
+      <th>标题</th>
+      <th>价格</th>
+      <th>库存</th>
+      <th>操作</th>
+    </tr>
+    <tr v-for="p in arr">
+      <td>{{p.id}}</td>
+      <td>{{p.title}}</td>
+      <td>{{p.price}}</td>
+      <td>{{p.num}}</td>
+      <!--废掉超链接跳转功能-->
+      <td>
+        <a href="javascript:void(0)" @click="del(p.id)">删除</a>
+        <a :href="'/update.html?id='+p.id">修改</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+
+  let v = new Vue({
+            el:"body>div",
+            data:{
+              arr:[],
+            },
+            methods:{
+              del(id){
+                if (confirm("您确认删除此商品吗？")){
+                  axios.post("/delete?id="+id).then(function (resp) {
+                    alert("删除成功");
+                    // 刷新页面
+                    location.reload();
+                  })
+                }
+              }
+            },
+            created:function () { /*属于Vue对象初始化过程中执行的方法，
+            一般vue管理的范围需要进入页面的同时发请求获取数据时，获取数据的代码写在此处*/
+              axios.post("/list").then(function (response) {
+                // 把查询到的数据，赋值给数组，页面会自动显示出商品信息
+                // 当axios框架发现服务器响应的是JSON格式字符串时，会自动将字符串转换成数组或js对象
+                v.arr = response.data;
+              })
+            }
+          }
+  )
+</script>
+</body>
+</html>

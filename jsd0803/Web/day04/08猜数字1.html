@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入1-100之间的数字">
+<input type="button" value="猜一猜" onclick="f()">
+<div></div>
+
+<script>
+    let x = parseInt(Math.random()*100)+1;
+    let i = document.querySelector("input")
+    let  d = document.querySelector("div")
+    let count = 0;
+    function f() {
+        count++;
+        if (window.isNaN(i.value)) {
+            d.innerText = "输入错误";
+            return;
+        }
+        if (i.value>x){
+            d.innerText = "猜大了！"
+        }else if (i.value<x){
+            d.innerText ="猜小了";
+        }else
+            d.innerText="恭喜你第"+count+"次猜对了";
+    }
+</script>
+</body>
+</html>

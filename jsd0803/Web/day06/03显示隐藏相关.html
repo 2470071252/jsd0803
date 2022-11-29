@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <!--v-if 让元素是否显示和变量进行绑定 true显示 false不显示（HTML 删除元素）-->
+    <h1 v-if="isVisible">刘德华</h1>
+    <!-- v-else是和v-if取反-->
+    <h1 v-else>张学友</h1>
+    <!--v-show让元素是否显示和变量进行绑定 true显示 false不现实 （HTML 隐藏元素）-->
+    <h1 v-show="isVisible">郭富城</h1>
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+            el: "body>div",
+            data: {
+                isVisible:true,
+            },
+            methods: {}
+        }
+    )
+</script>
+</html>

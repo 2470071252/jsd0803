@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="姓名" v-model="emp.name"><br>
+    <input type="text" placeholder="工资" v-model="emp.salary"><br>
+    <input type="text" placeholder="工作" v-model="emp.job"><br>
+    <input type="button" value="添加" @click="f()"><br>
+    <table border="1">
+        <caption>员工列表</caption>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>工资</th>
+            <th>工作</th>
+        </tr>
+
+        <tr v-for="(emp,i) in arr">
+            <td>{{i+1}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.job}}</td>
+            <td><input type="button" value="删除" @click="del(i)"></td>
+        </tr>
+
+    </table>
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+             emp:{name:"",salary:"",job:""},
+            arr:[]
+        },
+        methods:{
+            f(){
+                 // 往数组中添加对象
+                 v.arr.push({name:v.emp.name,salary:v.emp.salary,job:v.emp.job});
+            },
+            del(i){
+                // 删除数组中的元素，splice(起始位置,删除数量)
+                v.arr.splice(i,1);
+            }
+
+        }
+        }
+    )
+</script>
+</html>

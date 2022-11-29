@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+    <style>
+        body{
+            margin: 0;  /*去掉自带外边距*/
+            background-image: url("imgs/bg.jpg");
+            background-size: cover;  /*专门设置封面的一种尺寸，固定写法*/
+            text-align: center;
+        }
+        h1{
+            font-size: 72px;
+            color:#0096dc;
+            margin: 0;
+        }
+        img{
+
+            width: 100px;
+            margin: 0;
+        }
+        h2{
+            font-size: 32px;
+            color: #0096dc;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>欢迎来到酷鲨商城</h1>
+    <img src="imgs/shark.png" alt="log">
+    <h2>CoolSharkMall</h2>
+    <el-card style="width: 600px;height: 300px;margin: 0 auto;background-color: rgba(255,255,255,0.1)">
+        <el-form style="width: 400px;margin: 50px auto" label-width="80px">
+            <el-form-item label="用户名">
+                <el-input type="text" v-model="user.username" placeholder="请输入用户名"></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+                <el-input type="password" v-model="user.paswrod" placeholder="请输入密码"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" style="position: relative;right: 35px">登陆</el-button>
+            </el-form-item>
+        </el-form>
+    </el-card>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                user:{username:"",password:""},
+            }
+        },
+        methods: {
+
+        }
+    })
+</script>
+</html>

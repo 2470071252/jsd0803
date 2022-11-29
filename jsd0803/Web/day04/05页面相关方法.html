@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<input type="button" value="按钮" onclick="f()">
+<div>div</div>
+<script>
+    function f() {
+        // 得到文本框控件
+        let  i = document.querySelector("input")
+        // 得到div
+        let d = document.querySelector("div")
+        // 把文本框的内容赋值给div
+        d.innerText = i.value;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<h1>工程首页</h1>
+<!--相对路径：相对于当前页面所在的位置
+http://localhost:8080/index.html    http://localhost:8080/hello
+http://localhost:8080/abc/index.html    http://localhost:8080/abc/hello
+-->
+<a href="hello">相对路径</a>
+
+<!--绝对路径中的第一个/代表工程的根目录http://localhost:8080/
+http://localhost:8080/z/d/d/index.html  http://localhost:8080/hello
+-->
+<a href="/hello">绝对路径1</a>
+
+<!--一般用用于访问站外资源使用 固定的-->
+<a href="http://localhost:8080/hello">绝对路径2</a>
+
+<h2>通过form表单发出请求</h2>
+<form action="/hello">
+    <input type="text" name="info">
+    <input type="submit">
+</form>
+<a href="/param.html">传参测试</a>
+<a href="/bmi.html">身体质量指数测BMI</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>用户注册页面</h1>
+    <input type="text" placeholder="请输入用户名" v-model="user.username">
+    <input type="text" placeholder="请输入密码" v-model="user.password">
+    <input type="text" placeholder="请输入昵称" v-model="user.nickname">
+    <input type="button" value="注册" @click="reg()">
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+                user:{username:"",password:"",nickname:""},
+            },
+            methods:{
+                reg(){
+                    axios.post("/reg",v.user).then(function (response) {
+                        if (response.data == 1) {
+                            alert("注册成功！");
+                            location.href="/"
+                        }else {
+                            alert("用户名已存在！");
+                        }
+                    })
+                }
+            }
+          }
+  )
+</script>
+</body>
+</html>

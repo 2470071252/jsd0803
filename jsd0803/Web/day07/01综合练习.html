@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <template>
+        <el-input v-model="person.name" placeholder="请输入姓名"></el-input>
+        <el-input v-model="person.salary" placeholder="请输入工资"></el-input>
+        <el-input v-model="person.job" placeholder="请输入职位"></el-input>
+        <el-button type="primary" @click="add_hero">添加</el-button>
+    </template>
+
+    <template>
+        <h1>员工列表</h1>
+            <el-table
+                    :data="arr"
+                    style="width: 100%">
+                <el-table-column
+                        type="index"
+                        label="编号"
+                        width="50">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="姓名"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="salary"
+                        label="工资"
+                        width="180">
+                </el-table-column>
+                <el-table-column
+                        prop="job"
+                        label="工作">
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template slot-scope="scope">
+                        <el-button
+                                size="mini"
+                                type="danger"
+                                @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+    </template>
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                person:{name:"",salary:"",job:""},
+                arr:[{name:"李白",salary:"3000",job:"大野"},
+                    {name:"诸葛亮",salary:"1800",job:"法师"},
+                    {name:"黄忠",salary:"2000",job:"射手"},
+                    {name:"刘备",salary:"5000",job:"程序员"},
+                    ],
+            }
+        },
+        methods: {
+            handleDelete(i, p) {
+                v.arr.splice(i,1);
+                v.$message.error("删除了"+p.name);
+            },
+            add_hero(){
+                v.arr.push({name:v.person.name,salary:v.person.salary,job:v.person.job});
+                v.$message.success("添加"+v.person.name+"成功！");
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</head>
+<body >
+<table border="1" class="table">
+    <caption>用户列表</caption>
+    <tr>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>昵称</th>
+    </tr>
+</table>
+<script>
+    let arr = [{username:"张三",password:"admin@123",nickname:"zs"},
+        {username: "李四",password: "root@123",nickname: "ls"},
+        {username: "王五",password: "admin@root",nickname: "ww"}]
+    let table = document.querySelector("table");
+    for (let p of arr) {
+        let tr = document.createElement("tr");
+        let username = document.createElement("td");
+        let password = document.createElement("td");
+        let nickname = document.createElement("td");
+
+        username.innerText = p.username;
+        password.innerText = p.password;
+        nickname.innerText = p.nickname;
+
+        tr.append(username,password,nickname);
+
+        table.append(tr);
+    }
+</script>
+</body>
+</html>

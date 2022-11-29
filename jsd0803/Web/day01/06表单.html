@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06表单</title>
+</head>
+<body>
+<h1 align="center">注册页面</h1>
+<hr>
+<form action="http://www.baidu.com" method="get">
+    <!--
+    placeholder：占位文本
+    readonly：只读 使用该属性文本框无法进行写操作，通常配合value使用
+    maxlength：最大字符长度
+    value：设置默认值
+    -->
+    用户名：<input type="text" name="username"
+               placeholder="请输入用户名" maxlength="5"><br>
+    <!--密码框的属性和文本框通用-->
+    密码：<input type="password" name="password"
+              placeholder="******"><br>
+    <!--单选框
+    value属性必须写否则提交的是on
+    checked：设置默认选中
+    -->
+    性别：<input type="radio" name="gender" value="m">男
+    <input type="radio" name="gender" checked value="w">女 <br>
+    <!--多选框
+        checkbox 声明type为多选框
+        name    传递参数的值的名称
+        value   传递参数的值
+        checked 默认选项
+    -->
+    兴趣爱好：<input type="checkbox" name="hobby" value="cy">抽烟
+    <input type="checkbox" name="hobby"  checked value="hj">喝酒
+    <input type="checkbox" name="hobby" value="tt">烫头 <br>
+    <!--日期选择器-->
+    生日：<input type="date" name="birthday"><br>
+    <!--文件选择器-->
+    靓照：<input type="file" name="pic"><br>  <!--现在只是提交的文件名字-->
+    <!--下拉选择器
+        select 选择
+        option 选项
+        value 设置提交的内容，如果没有则上传option体里面的文本
+        selected 默认选择值
+    -->
+    所在地：<select name="city">
+        <option value="bj">北京</option>
+        <option value="sh">上海</option>
+        <option value="gz" selected>广州</option>
+    </select><br>
+    <input type="submit" value="注册">
+    <!--重置按钮-->
+    <input type="reset" value="重置">
+    <!--自定义按钮
+        显示的内容和触发事件都需要自己去定义
+        没有默认value
+    -->
+    <input type="button" value="自定义按钮" ><br>
+    <!--button标签
+        type对应input标签中的type
+    -->
+    <hr>
+    button标签：
+    <button type="submit">注册</button>
+    <button type="reset">重置</button>
+    <button type="button">自定义按钮</button>
+</form>
+</body>
+</html>

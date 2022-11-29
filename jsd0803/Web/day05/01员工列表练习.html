@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+ <!--   &lt;!&ndash; 最新版本的 Bootstrap 核心 CSS 文件 &ndash;&gt;
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+-->
+</head>
+<body>
+<input type="text" placeholder="姓名" id="i1"><br>
+<input type="text" placeholder="工资" id="i2"><br>
+<input type="text" placeholder="工作" id="i3"><br>
+<input type="button" value="添加" onclick="f()"><br>
+<table border="1" class="table">
+<caption>员工列表</caption>
+    <tr>
+        <th>姓名</th>
+        <th>工资</th>
+        <th>工作</th>
+    </tr>
+</table>
+<script>
+    let i1 = document.querySelector("#i1")
+    let i2 = document.querySelector("#i2")
+    let i3 = document.querySelector("#i3")
+    let table = document.querySelector("table")
+    function f() {
+        let tr = document.createElement("tr");
+        let td_name = document.createElement("td");
+        let td_salary = document.createElement("td");
+        let td_job = document.createElement("td");
+
+        td_name.innerText = i1.value;
+        td_salary.innerText = i2.value;
+        td_job.innerText = i3.value;
+
+        tr.append(td_name,td_salary,td_job);
+        table.append(tr);
+
+
+    }
+</script>
+</body>
+</html>

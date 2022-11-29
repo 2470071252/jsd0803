@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {{info}} <b>{{info}}</b>
+    <!--v-text让元素的文本内容和变量进行绑定-->
+    <p v-text="info"></p>
+
+    <!--让元素的标签内容和变量进行绑定-->
+    <p v-html="info"></p>
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            info:"文本相关 <b>加粗</b>"
+        }
+    })
+</script>
+</html>

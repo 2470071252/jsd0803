@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05元素显示方式</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <style>
+        /*块状元素，可以修改宽高*/
+        div{
+            border: 1px solid pink;
+            width: 100px;
+            height:40px;
+
+        }
+        span{
+            border: 1px solid blue;
+            /*行内元素默认无法修改宽高*/
+            width: 100px;
+            height: 100px;
+            /*如果行内元素需要改宽高，需要把display的值改成block或inline-block*/
+            display: inline-block;/*行内元素默认为inline（不能修改宽高），inline-block为共占一行*/
+        }
+        img{
+            /*行内快元素共占一行并可以修改宽高*/
+            width: 50px;
+            height: 50px;
+            display: none;/*隐藏元素*/
+        }
+        a{
+            background-color: #0aa1ed;
+            width: 132px;
+            height: 40px;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 3px;/*设置圆角*/
+        }
+    </style>
+</head>
+<body>
+<a href="">查看详情</a>
+<img src="../111.png" alt="">
+<img src="../111.png" alt="">
+<img src="../111.png" alt="">
+<div>div1</div>
+<div>div2</div>
+<div>div3</div>
+<span>span1</span><span>span2</span>
+<span>span3</span>
+</body>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</html>

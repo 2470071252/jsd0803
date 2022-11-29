@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.boot112.mapper.ProductMapper">
+    <sql id="insertmb">
+        INSERT INTO newproduct
+
+    </sql>
+    <sql id="deletemb">
+        DELETE FROM newproduct WHERE
+    </sql>
+    <sql id="updatemb">
+        UPDATE newproduct
+    </sql>
+    <sql id="selectmb">
+        SELECT id,title,price,num FROM newproduct
+    </sql>
+
+    <insert id="insert">
+        <include refid="insertmb"></include>
+        VALUES (
+        null,#{title},#{price},#{num}
+        )
+    </insert>
+
+    <insert id="insertMulti">
+        <include refid="insertmb"></include>
+        VALUES
+        <foreach collection="list" item="p" separator=",">
+             (NULL,#{p.title},#{p.price},#{p.num})
+        </foreach>
+    </insert>
+
+    <delete id="deleteById">
+        <include refid="deletemb"></include>
+        id=#{id}
+    </delete>
+
+    <delete id="deleteByIdMulti">
+        <include refid="deletemb"></include>
+        id IN (
+        <foreach collection="array" item="id" separator="," >
+            #{id}
+        </foreach>
+        )
+    </delete>
+
+    <update id="dynamicUpdate">
+        <include refid="updatemb"></include>
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="price!=null">price=#{price},</if>
+            <if test="num!=null">num=#{num}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <select id="selectById"
+            resultType="cn.tedu.boot112.entity.Product">
+        <include refid="selectmb"></include>
+        WHERE id=#{id}
+    </select>
+
+    <select id="select"
+            resultType="cn.tedu.boot112.entity.Product">
+        <include refid="selectmb"></include>
+    </select>
+
+    <select id="selectCount"
+            resultType="int">
+        select count(*) from newproduct
+    </select>
+</mapper>

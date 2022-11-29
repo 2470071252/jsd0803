@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weibo_List</title>
+</head>
+<body>
+<div>
+    <h1>微博列表页面</h1>
+    <div v-for="weibo in arr">
+        <h3>{{weibo.content}}</h3>
+        <img :src="weibo.url" width="100">
+    </div>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+            el: "body>div",
+            data: {
+                arr:[],
+            },
+            methods: {},
+            created: function () {
+                // 页面加载出来时候发请求获取所有微博数据
+                axios.get("/select").then(function (response) {
+                    v.arr=response.data;
+                })
+
+            }
+        }
+    )
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09盒子模型练习</title>
+    <style>
+        #d1{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            margin-top: 25px;
+            margin-left: 25px;
+            overflow: hidden;
+        }
+        body>div>div{
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+            margin: 25px auto;
+        }
+        #d2{
+            height: 100px;
+            width: 100px;
+            margin-left: 125px;
+            border: 5px solid green;
+            border-radius: 5px;
+            padding-top: 50px;
+            padding-left: 50px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div id="d1">
+    <div></div>
+</div>
+<div id="d2">哈喽</div>
+</body>
+</html>

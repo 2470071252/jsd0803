@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08选择器</title>
+    <style>
+        /*id选择器*/
+        #p1{color: red}
+        .c1{color: blue}
+        /*分组选择器，将多个不想关的选择器分成一组
+           格式：div,#id,.class
+        */
+        h1,#p1,.c1{background: antiquewhite}
+        /*属性选择器，通过标签属性进行选择
+           格式：标签名[属性='值']
+        */
+        input[name='username']{background: aliceblue}
+        input[type='password']{background: aqua}
+        /*任意元素选择器 包括body和html*/
+        /*border边框：粗细 样式 颜色;    solid代表实线边框  dashed代表虚线边框 */
+        *{border: 1px dashed pink}
+    </style>
+</head>
+<body>
+<input type="text" name="username">
+<input type="password" name="password">
+<h1>刘苍松</h1>
+<p id="p1">冰箱</p>
+<p>洗衣机</p>
+<p class="c1">电视</p>
+<div>香蕉</div>
+<div class="c1">苹果</div>
+</body>
+</html>

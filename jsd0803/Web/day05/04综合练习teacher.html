@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <caption>个人信息</caption>
+    <tr>
+        <td>照片:</td><td id="head_td"></td>
+    </tr>
+    <tr>
+        <td>名字:</td><td id="name_td"></td>
+    </tr>
+    <tr>
+        <td>年龄:</td><td id="age_td"></td>
+    </tr>
+    <tr>
+        <td>好友:</td><td id="friend_td"></td>
+    </tr>
+</table>
+<input type="button" value="请求数据" onclick="f()">
+</body>
+<script>
+    // 得到页面元素对象
+    let tHead = document.querySelector("#head_td");
+    let tName = document.querySelector("#name_td");
+    let tAge = document.querySelector("#age_td");
+    let tFrend = document.querySelector("#friend_td");
+    function f() {
+        // 模拟从服务器请求到数据
+        let person = {pic:"a.jpg",name:"苍老师",age:"18"
+            ,friends:["貂蝉","西施","武则天","孙尚香"]};
+        // 把person里面的数据显示到页面中
+        tName.innerText = person.name;
+        tAge.innerText = person.age;
+        // 创建图片标签
+        let img = document.createElement("img");
+        img.src = person.pic;
+        tHead.append(img);
+        //创建ul
+        let ul = document.createElement("ul");
+        for (let friend of person.friends) {
+            let li = document.createElement("li");
+            li.innerText = friend;
+            ul.append(li);
+        }
+        tFrend.append(ul);
+    }
+
+</script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-upload
+            action="/upload"
+            name="pic"
+            limit="9"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-success="handleSuccess"
+            :on-remove="handleRemove">
+        <i class="el-icon-plus"></i>
+    </el-upload>
+    <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="">
+    </el-dialog>
+    <input type="text" v-model="weibo.content" placeholder="说点儿啥...">
+    <input type="button" @click="send()" value="发布微博">
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false,
+                weibo:{
+                    content:"",
+                    urls:""
+                },
+                fileList:[],
+            }
+        },
+        methods: {
+            send(){
+                if (v.fileList.length==0){
+                    alert("请选择上传的图片")
+                    return;
+                }
+                // 得到多张图片路径  /xxx.jpg,/xxx.jpg,/xxxx.jpg
+                let arr=[];
+                // 遍历每一个文件的文件路径，添加到数组里面
+                for (let file of v.fileList){
+                    arr.push(file.response);
+                }
+                // ["xxx.jpg","xxxx.jpg"]    "xxxxx.jpg,xxx.jpg"
+                // 将数组转化为字符串
+                v.weibo.urls = arr.toString();
+                console.log(v.weibo.urls);
+                axios.post("/weibo/insert",v.weibo).then(function (response) {
+                    if (response.data == 1) {
+                        alert("发布完成");
+                        location.href="/";
+                    }else{
+                        alert("请先登录！");
+                        location.href="/login.html";
+                    }
+                })
+
+            },
+            handleSuccess(response,file,fileList){
+                v.fileList=fileList;
+
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+                v.fileList=fileList;
+                // 发出删除文件的请求
+                axios.get("remove?url="+file.response).then(function (response) {
+                    console.log("服务器文件删除完成！")
+                })
+
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {{info}}
+    <!--事件绑定的两种写法-->
+    <input type="button" value="按钮1" @click="f()">
+    <input type="button" value="按钮2" v-on:click="f()">
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div",
+        data:{
+            info:"事件绑定！",
+        },
+        methods:{
+            f(){
+                alert("测试成功！")
+            }
+
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>0</h1>
+<script>
+    let count=0;
+    let h = document.querySelector("h1")
+    // 开启定时器
+    setInterval(f,1000) // 1000ms
+    function f() {
+        count++;
+        h.innerText=count;
+    }
+
+    // 匿名方法定时器
+   let timer = setInterval(function () {
+       console.log(count)
+       if (count == 5) {
+           // 停止定时器
+           clearInterval(timer)
+       }
+    },1000);
+    // 开启只执行一次的定时器
+    setTimeout(function () {
+        alert("时间到")
+    },3000)
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-page-header
+            style="background-color: #0095d7;color: white;
+                    line-height: 60px"
+            @back="goBack" content="添加轮播图">
+    </el-page-header>
+    <el-upload
+            action="/upload"
+            name="pic"
+            limit="1"
+            list-type="picture-card"
+            :on-success="handleSuccess"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+        <i class="el-icon-plus"></i>
+    </el-upload>
+    <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="">
+    </el-dialog>
+    <el-button type="success" @click="insert()">添加轮播图</el-button>
+
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false,
+                url:""  //记录上传成功的图片路径
+            }
+        },
+        methods: {
+            goBack(){
+                history.back();//返回上一页面
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+
+                axios.get("/remove?url="+v.url).then(function(response){
+                    v.$message("删除成功!");
+                    //删除后url 应该清空  代表没有选择上传的图片
+                    v.url="";
+                })
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            handleSuccess(response,file,fileList){
+                //file.response得到服务器上传成功后相应的图片路径
+                v.url=file.response;
+            },
+            insert(){
+                if (v.url==""){
+                    v.$message("请选择上传的图片!");
+                    return;
+                }
+                //写发轮播图的代码
+                axios.get("/banner/insert?url="+v.url).then(function () {
+                    //返回后台管理页面
+                    location.href="/admin.html";
+                })
+
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.boot103.mapper.ProductMapper">
+    <insert id="insert">
+        INSERT INTO product VALUES(
+                                   NULL,#{title},#{price},#{num}
+                                  )
+    </insert>
+    <select id="select" resultType="cn.tedu.boot103.entity.Product">
+        SELECT id,title,price,num FROM product
+    </select>
+    <select id="selectByTitle" resultType="cn.tedu.boot103.entity.Product">
+        SELECT id FROM product WHERE title=#{title}
+    </select>
+    <delete id="deleteById">
+        delete from product where id=#{id}
+    </delete>
+
+    <update id="update">
+        update product set title=#{title},price=#{price},num=#{num} where id=#{id}
+    </update>
+
+    <select id="selectById" resultType="cn.tedu.boot103.entity.Product">
+        select id,title,price,num from product where id=#{id}
+    </select>
+</mapper>

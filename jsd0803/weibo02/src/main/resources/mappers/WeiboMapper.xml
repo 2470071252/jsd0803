@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.weibo02.mapper.WeboMapper">
+    <insert id="insert">
+        insert into weibo
+        values (null, #{content}, #{urls}, #{created}, #{userId})
+    </insert>
+
+    <select id="selectIndex" resultType="cn.tedu.weibo02.pojo.vo.WeiboIndexVO">
+        SELECT w.id id, content, urls, nickname
+        FROM weibo w
+                 JOIN user u
+                      ON w.user_id = u.id
+    </select>
+
+    <select id="selectById" resultType="cn.tedu.weibo02.pojo.vo.WeiboDeteilVO">
+        SELECT   w.id id, content, urls, nickname,created
+        FROM weibo w JOIN user u
+        ON w.user_id = u.id
+        WHERE w.id=#{id}
+    </select>
+</mapper>

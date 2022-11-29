@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="boot111" />
+        <module name="coolshark" />
+        <module name="boot08_1" />
+        <module name="boot08_2" />
+        <module name="boo02_1" />
+        <module name="boot01_2" />
+        <module name="boot03_1" />
+        <module name="boot01_1" />
+        <module name="weibo" />
+        <module name="boot11" />
+        <module name="boot10" />
+        <module name="testmaven" />
+        <module name="boot103" />
+        <module name="boot101" />
+        <module name="boot102" />
+        <module name="teacherManagementSystem" />
+        <module name="teacherMangementSystem" />
+        <module name="jsd0803" />
+        <module name="boot09" />
+        <module name="boot08" />
+        <module name="boot07" />
+        <module name="boot06" />
+        <module name="boot01" />
+        <module name="boot05" />
+        <module name="boot04" />
+        <module name="weibo01" />
+        <module name="boot03" />
+        <module name="boot112" />
+        <module name="weibo02" />
+        <module name="boot02" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="boot02_1" target="1.8" />
+      <module name="boot8_2" target="1.8" />
+      <module name="employMangementSystem" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>{{info}}</h1>
+</div>
+
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<!--
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+-->
+
+<!--引入本地的Vue.js文件-->
+<script src="js/vue.min.js"></script>
+<script>
+    let v = new Vue({
+        el:"body>div", /*el=element设置Vue的管理范围*/
+        data:{  // data里面的变量是负责和页面元素进行绑定的
+            info:"Hello Vue!"
+        }
+    })
+    // 三秒后修改info的值
+    setTimeout(function () {
+        v.info = "值改变了？"
+    },3000)
+</script>
+</body>
+</html>

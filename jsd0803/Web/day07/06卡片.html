@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <div style="width: 200px;height: 200px">
+        <el-card>
+            <h1>卡片1</h1>
+        </el-card>
+    </div>
+    <el-row gutter="10">
+        <el-col span="4"  v-for="item in 6">
+            <el-card>
+                <h1>Card{{item}}</h1>
+            </el-card>
+        </el-col>
+    </el-row>
+    <el-row gutter="20">
+        <el-col span="6" v-for="product in arr">
+            <el-card>
+                <img :src="product.url" alt="" width="100%">
+                <p>{{product.title}}</p>
+                <p>
+                    <span>价格：{{product.price}}</span>
+                    <span style="float: right">销量：{{product.saleCount}}</span>
+                </p>
+            </el-card>
+        </el-col>
+    </el-row>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                arr:[{title:"牛仔裤",url:"imgs/a.jpg",price:500,saleCount:125},
+                    {title:"白色卫衣",url:"imgs/b.jpg",price:200,saleCount:35},
+                    {title:"黑色运动裤",url:"imgs/c.jpg",price:300,saleCount:10},
+                    {title:"黑色帽衫",url:"imgs/d.jpg",price:100,saleCount:18},
+                ]
+            }
+        },
+        methods: {
+
+        }
+    })
+</script>
+</html>

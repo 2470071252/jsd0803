@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <h1>修改商品</h1>
+  <hr>
+  id:<input type="text" placeholder="商品ID" v-model="p.id" :value="p.id" readonly><br>
+  商品名：<input type="text" placeholder="商品标题" v-model="p.title" :value="p.title"><br>
+  价格：<input type="text" placeholder="商品价格" v-model="p.price" :value="p.price"><br>
+  库存<input type="text" placeholder="商品库存" v-model="p.num" :value="p.num"><br>
+  <input type="button" value="修改" @click="update()">
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+              p:{id:"",title:"",price:"",num:""},
+            },
+            methods:{
+              update(){
+
+                // 发出post异步修改请求,因为传递的参数是一个对象，所以用post请求方便
+                axios.post("/update",v.p).then(function () {
+                  alert("修改完成")
+                  location.href="/list.html";
+                })
+              },
+            },
+            created:function () {
+              // location.search ---> ?id=number
+              axios.get("selectById"+location.search).then(function (response) {
+                // 返回的是装着商品详细信息的json字符串，axios框架会自动将json转化成json对象
+                v.p = response.data;
+              }) // selectById?id=x
+            }
+          }
+  )
+</script>
+</body>
+</html>

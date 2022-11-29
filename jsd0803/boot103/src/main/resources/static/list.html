@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+<h1 align="center">商品列表</h1>
+    <template>
+        <el-table
+                :data="arr"
+                style="width: 100%">
+            <el-table-column
+                    type="index"
+                    label="编号"
+                    width="50">
+            </el-table-column>
+            <el-table-column
+                    v-if="false"
+                    prop="id"
+                    label="id"
+                    width="50">
+            </el-table-column>
+            <el-table-column
+                    prop="title"
+                    label="商品名"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="price"
+                    label="价格"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="num"
+                    label="库存">
+            </el-table-column>
+            <el-table-column
+                    fixed="right"
+                    label="操作"
+                    width="100">
+                <template slot-scope="scope">
+                    <el-button @click="handleClick(scope.row)" type="text" size="small">删除</el-button>
+                    <el-button type="text" size="small" @click="handleEdit(scope.row)">编辑</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                arr:[],
+            }
+        },
+        methods: {
+            handleClick(p){
+                axios.get("/delete?id="+p.id).then(function (response) {
+                    if (confirm("确认删除")) {
+                        location.reload();
+                    }
+                })
+            },
+            handleEdit(p){
+                location.href="/update.html?id="+p.id;
+            }
+        },
+        created:function () {
+            axios.get("/list").then(function (response) {
+                v.arr = response.data;
+            })
+        }
+    })
+</script>
+</html>

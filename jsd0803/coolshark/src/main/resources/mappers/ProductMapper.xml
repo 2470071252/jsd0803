@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.coolshark.mapper.ProductMapper">
+    <insert id="insert">
+        insert into product
+        values (null,#{title},#{url},#{price},#{oldPrice},#{saleCount},#{num},#{viewCount},#{created},#{categoryId})
+    </insert>
+    <!--resultMap：结果映射 配置resultMap解决数据库中的字段名和类中的属性不一致问题-->
+    <select id="selectForAdmin" resultMap="productAdminRM">
+        select id,title,url,price,sale_count
+        from product
+    </select>
+<!--   告诉Mybatis 数据库中的sale_count字段对应cn.tedu.coolshark.pojo.vo中ProductAminVO类中的saleCount属性-->
+    <resultMap id="productAdminRM"
+               type="cn.tedu.coolshark.pojo.vo.ProductAdminVO">
+        <result column="sale_count" property="saleCount"></result>
+    </resultMap>
+
+    <delete id="deleteById">
+        delete from product where id=#{id}
+    </delete>
+
+    <select id="selectUrlById" resultType="String">
+        select url from product where id=#{id}
+    </select>
+
+    <select id="selectForIndex" resultType="cn.tedu.coolshark.pojo.vo.ProductIndexVO">
+        select id,title,url,price,old_price,sale_count
+        from product
+    </select>
+
+    <select id="selectForTop" resultType="cn.tedu.coolshark.pojo.vo.ProductTopVO">
+        select id,title,sale_count from product
+        order by sale_count desc limit 0,6
+    </select>
+
+    <select id="selectById" resultType="cn.tedu.coolshark.pojo.vo.ProductDetailVO">
+        select id,title,url,price,old_price,sale_count,view_count,created
+        from product where id=#{id}
+    </select>
+
+    <select id="selectByCid" resultType="cn.tedu.coolshark.pojo.vo.ProductIndexVO">
+        select id,title,url,price,old_price,sale_count
+        from product where category_id=#{id}
+    </select>
+
+    <!--concat()函数作用是将多个字符串合并成一个字符串-->
+    <select id="selectByWd" resultType="cn.tedu.coolshark.pojo.vo.ProductIndexVO">
+        select id,title,url,price,old_price,sale_count
+        from product
+        where title like concat('%',#{wd},'%')
+    </select>
+
+    <select id="selectForUpdateById" resultType="cn.tedu.coolshark.pojo.vo.ProductUpdateVO">
+        select id,title,url,price,old_price,sale_count,num,category_id
+        from product where id=#{id}
+    </select>
+
+    <update id="update">
+        update product set
+        title=#{title},url=#{url},price=#{price},
+        old_price=#{oldPrice},sale_Count=#{saleCount},
+        num=#{num},category_id=#{categoryId}
+        where id=#{id}
+    </update>
+</mapper>
+
+
+<!--解决数据库中的字段名和类中的属性不一致问题
+1.在mapper.xml的SQL语句中设置和类属性相同的别名（如果sql查询少，可以直接使用别名）
+2.在application.properties中配置 mybatis.configuration.map-underscore-to-camel-case=true（如果只是命名规范问题，可以使用配置文件，简单方便）
+3.使用结果映射-resultMap(可以多个查询复用同一个结果映射)
+-->

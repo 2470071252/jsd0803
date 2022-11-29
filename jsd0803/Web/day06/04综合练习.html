@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>员工管理系统</h1>
+
+    <div v-if="!isLogin">
+        <a href="">注册</a>
+        <!-- javascript:void(0) 废掉超链接的跳转功能 -->
+        <a href="javascript:void(0)" @click="login()">登陆</a>
+    </div>
+
+    <div v-else>
+        <input type="text" placeholder="员工姓名" v-model="newName">
+        <input type="button" value="添加" @click="add()">
+        <a href="javascript:void(0)" @click="logout()">退出登录</a>
+    </div>
+
+    <table border="">
+        <caption>员工列表</caption>
+        <tr>
+            <th>编号</th>
+            <th>名字</th>
+            <th v-if="isLogin">操作</th>
+        </tr>
+        <tr v-for="(p,i) in arr">
+            <td>{{i+1}}</td>
+            <td>{{p}}</td>
+            <td v-if="isLogin"><input type="button" value="删除" @click="del(i)"></td>
+        </tr>
+    </table>
+
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+            el: "body>div",
+            data: {
+                newName:"",
+                isLogin:false,
+                arr:["刘备","关羽","张飞"],
+            },
+            methods: {
+                login(){
+                    v.isLogin = true;
+                },
+                logout(){
+                    v.isLogin = false;
+                },
+                del(i){
+                  v.arr.splice(i,1);
+                },
+                add(){
+                    v.arr.push(v.newName);
+                },
+
+            }
+        }
+    )
+</script>
+</html>

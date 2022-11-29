@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01选择器练习</title>
+    <style>
+        #gy{color: green}
+        .hs{color: yellow}
+        body>p,input[type='text']{background-color: red}
+
+        body>div>div>p {color: pink}
+
+        div div p {background-color: yellow}
+
+        a:link{color: green}
+        a:visited{color: red}
+        a:hover{color: yellow}
+        a:active{color: pink}
+
+    </style>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+</head>
+<body>
+<ul>
+    <li>刘备</li><li id="gy">关羽</li><li class="hs">张飞</li>
+</ul>
+<p >香蕉</p><p class="hs">苹果</p>
+<input type="text">
+<input type="password">
+<div>
+    <p>p1</p>
+    <div><p>p2</p></div>
+    <div><div><p>p3</p></div></div>
+</div>
+<a href="http://www.tedu.com">达内官网</a>
+</body>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</html>

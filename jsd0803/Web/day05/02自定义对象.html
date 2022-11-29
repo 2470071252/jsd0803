@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <caption>
+        商品列表
+    </caption>
+    <tr>
+        <th>商品标题</th>
+        <th>价格</th>
+        <th>销量</th>
+        <th>库存</th>
+    </tr>
+</table>
+
+<script>
+    // 实例化空对象
+    let  p1 = {};
+    // 动态添加属性和方法（java不支持动态添加）
+    p1.name = "悟空";
+    p1.age=500;
+    p1.run = function () {
+        console.log(this.name+":"+this.age);
+    };
+    p1.run();
+
+    // 实例化自带属性和方法的对象
+    let p2 = {
+        name:"Jerry",
+        age:"600",
+        run:function () {
+            console.log(this.name+":"+this.age);
+        }
+    }
+    p2.run();
+    // 将多个信息封装到一个对象中
+    let product = {title:"小米手机",price:"5000",saleCount:"2000",num:"35"};
+    // 通过数组封装多个商品信息(常见)
+    let arr = [{title:"小米手机",price:"5000",saleCount:"2000",num:"35"},
+        {title:"华为电视",price:"3000",saleCount:"3000",num:"354"},
+        {title:"未来汽车",price:"500000",saleCount:"20000",num:"135"}]
+
+    // 得到表格标签
+    let table = document.querySelector("table");
+    // 遍历arr数组 forof是javaScript中的新循环
+    for (let p of arr) {
+        // 创建tr和td
+        let tr = document.createElement("tr");
+        let titleTd = document.createElement("td")
+        let priceTd = document.createElement("td")
+        let saleCountTd = document.createElement("td")
+        let numTd = document.createElement("td")
+        // 给td设置显示的内容
+        titleTd.innerText = p.title;
+        priceTd.innerText = p.price;
+        saleCountTd.innerText = p.saleCount;
+        numTd.innerText = p.num;
+        // td装进tr
+        tr.append(titleTd,priceTd,saleCountTd,numTd)
+        // tr装进table
+        table.append(tr);
+
+    }
+</script>
+</body>
+</html>

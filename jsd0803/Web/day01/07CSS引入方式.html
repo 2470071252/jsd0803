@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07CSS引入方式</title>
+    <style>/*内部样式，可以复用，但是只能在当前页面复用，不能多页面复用*/
+        h2{color: antiquewhite}
+    </style>
+    <!--引入外部的CSS样式文件-->
+    <link rel="stylesheet" href="my.css">
+</head>
+<body>
+<!--优先级：内联标签>内部标签>外部标签-->
+<!--n内联样式，弊端是不能复用-->
+<h1 style="color:#ff0000">内联样式1</h1>
+<h1 style="color: rgba(0,110,248,0.79)">内联样式2</h1>
+<h2>内部样式1</h2>
+<h2>内部样式2</h2>
+<h3>外部样式1</h3>
+<h3>外部样式2</h3>
+</body>
+</html>

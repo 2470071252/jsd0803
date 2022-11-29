@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.coolshark.mapper.BannerMapper">
+    <select id="select" resultType="cn.tedu.coolshark.pojo.entity.Banner">
+        select id,url from banner
+    </select>
+    <delete id="deleteById">
+        delete from banner
+        where id=#{id}
+    </delete>
+    <insert id="insert">
+        INSERT INTO banner VALUES (null,#{url})
+    </insert>
+    <select id="selectById" resultType="String">
+        SELECT url
+        FROM banner WHERE id=#{id}
+    </select>
+    <update id="update">
+        update banner set url=#{url} where id=#{id}
+    </update>
+</mapper>
+

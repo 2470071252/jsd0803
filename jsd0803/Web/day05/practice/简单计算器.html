@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="请输入数字" v-model="num1">
+    <input type="text" placeholder="请输入数字" v-model="num2">
+    <input type="button" value="加" @click="f('+')">
+    <input type="button" value="减" @click="f('-')">
+    <input type="button" value="乘" @click="f('*')">
+    <input type="button" value="除" @click="f('/')">
+    <h1>结果为：{{result}}</h1>
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let num1 = "";
+    let num2 = "";
+    let v = new Vue({
+        el: "body>div",
+        data: {
+            result: "",
+        },
+        methods: {
+            f(x) {
+                if (isNaN(num1) || isNaN(num2)) {
+                    v.result = "请输入数字!";
+                    return;
+                }
+                v.result = eval(num1+x+num2);
+            }
+        },
+    })
+</script>
+</html>

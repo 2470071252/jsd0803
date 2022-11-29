@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>用户首页</h1>
+    <div v-if="islogin">
+        <h3>欢迎{{user.nickname}}登陆</h3>
+        <a href="javascript:void(0)" @click="logout()">退出登录</a>
+        <a href="/send.html">发微博</a>
+    </div>
+
+    <div v-else>
+        <a href="/reg.html">用户注册</a>
+        <a href="/login.html">用户登陆</a>
+    </div>
+    <h2>微博列表</h2>
+    <hr>
+    <div v-for="weibo in arr">
+        <h3>
+            <a :href="'/detail.html?id='+weibo.id">
+                {{weibo.nickname}}说:{{weibo.content}}
+            </a>
+        </h3>
+        <img v-for="url in weibo.urlArr" :src="url" width="100">
+    </div>
+
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+            el: "body>div",
+            data: {
+                islogin: false,
+                user:{},
+                arr: [],
+            },
+            methods: {
+                logout() {
+                    axios.get("/logout").then(function () {
+                        v.islogin=false;
+                    })
+                }
+            },
+            created: function () {
+                axios.get("/currentUser").then(function (response) {
+                    v.islogin = response.data == "" ? false : true;
+                    v.user = response.data;
+                })
+                axios.get("/weibo/select").then(function (response) {
+                    v.arr=response.data;
+                    // 遍历所有微博对象 遍历完之后微博对象会增加一个装着所有图片路径的数组
+                    for (let weibo of v.arr){
+                        // “a.jpg,/b.jpg,/c.jpg”  ["/a.jpg","/b.jpg","/c.jpg"]
+                        weibo.urlArr = weibo.urls.split(",");
+                    }
+                })
+            }
+        }
+    )
+</script>
+</body>
+</html>

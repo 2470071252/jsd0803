@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<input type="button" value="平方" onclick="f()">
+<div>
+    结果：
+</div>
+
+<script>
+    function f() {
+        let i= document.querySelector("input");
+        let d = document.querySelector("div")
+        if (isNaN(i.value)) {
+            d.innerText = "输入错误";
+            return;
+        }
+        // i.value得到的是一个字符串内容，进行-*/运算时会自动转成数值
+        /*如果输入的内容不是数值会转成NaN（Not a Number），NaN和任何数运算都是NaN*/
+        d.innerText = "结果："+i.value*i.value;
+        // 进行加法运算时，需要将字符串转化成数值后运算，否则会出现拼接现象
+        // d.innerText = "结果"+(parseFloat(i.value)+parseFloat(i.value));
+        // d.innerText = "结果"+(i.value*1+i.value*1);
+    }
+</script>
+</body>
+</html>

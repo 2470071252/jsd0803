@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.coolshark.mapper.CategoryMapper">
+    <select id="select" resultType="cn.tedu.coolshark.pojo.entity.Category">
+        select
+              id,name
+        from category
+    </select>
+
+    <delete id="deleteById">
+        delete from category
+        where id=#{id}
+    </delete>
+
+    <insert id="insert">
+        insert into category
+        values(null,#{name})
+    </insert>
+    <update id="update">
+        UPDATE category SET name=#{name}
+        WHERE id=#{id}
+    </update>
+</mapper>

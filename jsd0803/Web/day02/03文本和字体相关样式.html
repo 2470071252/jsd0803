@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03文本和字体相关样式</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <style>
+        div {
+            width: 200px;
+            height: 50px;
+            border: 1px solid red;
+            text-align: center;
+            /*文本修饰overline/line-through/underline*/
+            text-decoration: line-through;
+             /*行高；多行控制行间距，单行控制垂直居中；当行高等于标签高度时，为垂直居中*/
+            line-height:50px ;
+            /*设置文本阴影：颜色 x偏移值 y偏移值 模糊度*/
+            text-shadow: rgb(80, 76, 76) 3px -3px 5px ;
+            /*设置字体大小*/
+            font-size: 20px;
+            /*设置字体加粗*/
+            font-weight: bold;
+            /*设置斜体*/
+            font-style: italic;
+            /*设置字体*/
+            font-family: cursive;
+        }
+        h3{
+            /*去掉h3自带加粗效果*/
+            font-weight: normal;
+            /*字体大小和字体格式一起写*/
+            font: 30px cursive;
+        }
+        a{text-decoration: none} /*去掉文本修饰*/
+    </style>
+</head>
+<body>
+<a href="">超链接</a>
+<div>文本和字体相关</div>
+<h3>这是h3</h3>
+</body>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</html>

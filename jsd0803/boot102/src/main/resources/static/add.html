@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+</head>
+<body>
+<div>
+  <input type="text" placeholder="商品名" v-model="product.title">
+  <input type="text" placeholder="价格" v-model="product.price">
+  <input type="text" placeholder="库存" v-model="product.num">
+  <input type="button" value="提交" @click="add()">
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+              product:{title:"",price:"",num:""},
+            },
+            methods:{
+              add(){
+                axios.post("/add",v.product).then(function () {
+                        alert("添加成功");
+                        location.href="/";    // 返回index
+                })
+              },
+            }
+          }
+  )
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font: 12px "simhei", Arial, Helvetica, sans-serif;
+            color: #666;
+        }
+
+        body > div {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        #t_l_div {
+            width: 611px;
+            height: 376px;
+            float: left;
+            position: relative;
+        }
+
+        #t_r_div {
+            width: 375px;
+            height: 376px;
+            float: right;
+            position: relative;
+        }
+
+        body > div > div {
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        #b_l_div {
+            width: 366px;
+            height: 233px;
+            float: left;
+        }
+
+        #b_r_div {
+            float: right;
+        }
+
+        #b_r_div > div {
+            width: 198px;
+            height: 233px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        #t_div > div, #b_l_div, #b_r_div > div {
+            background-color: #E8E8E8;
+        }
+
+        #t_l_div > div {
+            width: 245px;
+            height: 232px;
+            margin: 68px 0 0 36px;
+        }
+
+        #t_r_div > div {
+            width: 245px;
+            height: 232px;
+            margin: 68px 0 0 36px;
+        }
+
+        #t_l_div img {
+            width: 318px;
+            height: 319px;
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+        }
+
+        #t_r_div img {
+            width: 292px;
+            height: 232px;
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+
+        }
+
+        /*img放大效果*/
+        img:hover {
+            /*设置动画持续时间， 单位是s秒*/
+            transition-duration: 2s ;
+            /*设置鼠标悬停时缩放1.1倍*/
+            transform: scale(1.1);
+        }
+
+        .top_ys1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: lighter;
+        }
+
+        .top_ys2 {
+            margin-bottom: 24px;
+            font-size: 12px;
+            font-weight: lighter;
+        }
+
+        .top_ys3 {
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #0aa1ed;
+            font-size: 24px;
+        }
+
+        .top_ys4 {
+            width: 132px;
+            height: 40px;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            background-color: #0aa1ed;
+            border-radius: 3px;
+            display: block;
+            line-height: 40px;
+            text-decoration: none;
+        }
+
+        #t_header {
+            width: 355px;
+            height: 35px;
+            line-height: 35px;
+            padding-left: 11px;
+            background-color: #62b5ec;
+        }
+
+        #t_header > img {
+            margin-top: 10px;
+        }
+
+        #t_header > span {
+            position: relative;
+            font-size: 16px;
+            color: #ffffff;
+            bottom: 5px;
+        }
+
+        ul, p {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            overflow: hidden; /*解决高度识别为0导致的显示异常*/
+        }
+
+        li {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .c1 {
+            padding-left: 10px;
+        }
+
+        .c1 > p {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #62b5ec;
+        }
+
+        .c1 a {
+            color: #0aa1ed;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .c1 a:hover {
+            color: #0a7eb8;
+        }
+
+        .bottom_ys1 {
+            margin-top: 8px;
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: lighter;
+            color: black;
+            text-align: center;
+        }
+
+        .bottom_ys2 {
+            margin: 6px 0;
+            font-size: 12px;
+            font-weight: bold;
+            color: #0aa1ed;
+            text-align: center;
+        }
+
+        .bottom_ys3 {
+            display: block;
+            background-color: #0aa1ed;
+            border-radius: 2px;
+            width: 100px;
+            height: 24px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 0 auto;
+            text-decoration: none;
+            line-height: 24px;
+            color: white;
+        }
+        .bottom_ys3:hover{
+            background-color: #62b5ec;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <div id="t_div">
+        <div id="t_l_div">
+            <div>
+                <p class="top_ys1">灵越 燃7000系列</p>
+                <p class="top_ys2">酷睿双核i5处理器|256GB SSD| 8GB内存 <br>
+                    英特尔HD显卡620含共享显卡内存</p>
+                <p class="top_ys3">￥4999.00</p>
+                <a href="" class="top_ys4">查看详情</a>
+            </div>
+            <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img1.png" alt="">
+        </div>
+        <div id="t_r_div">
+            <div>
+                <p class="top_ys1">颜值 框不住</p>
+                <p class="top_ys2">酷睿双核i5处理器|256GB SSD| 8GB内存 <br>
+                    英特尔HD显卡620含共享显卡内存</p>
+                <p class="top_ys3">￥6888.00</p>
+                <a href="" class="top_ys4">查看详情</a>
+            </div>
+            <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img2.png" alt="">
+        </div>
+    </div>
+    <div id="b_div">
+        <div id="b_l_div">
+            <div id="t_header">
+                <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/computer_icon1.png" alt="">
+                <span>电脑,办公/1F</span>
+            </div>
+            <div class="c1">
+                <p>电脑整机</p>
+                <ul>
+                    <li><a href="">笔记本</a></li>
+                    <li><a href="">游戏机</a></li>
+                    <li><a href="">台式机</a></li>
+                    <li><a href="">一体机</a></li>
+                    <li><a href="">服务器</a></li>
+                    <li><a href="">联想</a></li>
+                </ul>
+            </div>
+
+            <div class="c1">
+                <p>电脑配件</p>
+                <ul>
+                    <li><a href="">CPU</a></li>
+                    <li><a href="">SSD硬盘</a></li>
+                    <li><a href="">显示器</a></li>
+                    <li><a href="">显卡</a></li>
+                    <li><a href="">组装电脑</a></li>
+                    <li><a href="">机箱</a></li>
+                </ul>
+            </div>
+
+            <div class="c1">
+                <p>外设/游戏</p>
+                <ul>
+                    <li><a href="">键盘</a></li>
+                    <li><a href="">鼠标</a></li>
+                    <li><a href="">U盘</a></li>
+                    <li><a href="">移动硬盘</a></li>
+                    <li><a href="">游戏设备</a></li>
+                    <li><a href="">智能单车</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="b_r_div">
+            <div>
+                <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img3.png" alt="">
+                <p class="bottom_ys1">戴尔(DELL)XPS13-9360-R1609 13.3英寸微边框笔记本电脑</p>
+                <p class="bottom_ys2">￥4600.00</p>
+                <a href="" class="bottom_ys3">查看详情</a>
+            </div>
+            <div>
+                <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img4.png" alt="">
+                <p class="bottom_ys1">14.8mm超轻薄笔记本电脑 航海王版 13.3英寸微边框笔记本电脑</p>
+                <p class="bottom_ys2">￥5600.00</p>
+                <a href="" class="bottom_ys3">查看详情</a>
+            </div>
+            <div>
+                <img src="http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img5.png" alt="">
+                <p class="bottom_ys1">联想(Lenovo) YOGA900 多彩版 13.3英寸微边框笔记本电脑</p>
+                <p class="bottom_ys2">￥6600.00</p>
+                <a href="" class="bottom_ys3">查看详情</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

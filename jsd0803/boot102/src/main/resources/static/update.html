@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="id" v-model="product.id" readonly :value="product.id">
+    <input type="text" placeholder="商品名" v-model="product.title" :value="product.title">
+    <input type="text" placeholder="价格" v-model="product.price" :value="product.price">
+    <input type="text" placeholder="库存" v-model="product.num" :value="product.num">
+    <input type="button" value="修改" @click="update()" >
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+                product:{id:"",title:"",price:"",num:""},
+            },
+            methods:{
+                update(){
+                    axios.post("/update",v.product).then(function () {
+                        alert("修改成功");
+                        location.href="/list.html";
+                    })
+                }
+            },
+      created:function () {  // ?id=20
+          axios.get('/selectById'+location.search).then(function (response) {
+              v.product=response.data;
+          })
+      }
+          }
+  )
+</script>
+</body>
+</html>

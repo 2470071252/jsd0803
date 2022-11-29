@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>员工管理系统</h1>
+<div>
+<div>
+    <div v-if="!isLogin">
+        <a href="">注册</a>
+        <a href="javascript:void(0)" @click="login()">登陆</a>
+    </div>
+    <div  v-else>
+        <input type="text" placeholder="请输入用户名" v-model="newName">
+        <input type="button" value="提交" @click="add()">
+        <a href="javascript:void(0)" @click="loginOut()">退出登录</a>
+    </div>
+
+
+</div>
+    <table border="1">
+        <caption>员工信息</caption>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th v-if="isLogin">操作</th>
+        </tr>
+        <tr v-for="(name,i) in nameList">
+            <td>{{i+1}}</td>
+            <td>{{name}}</td>
+            <td v-if="isLogin"><input type="button" value="删除" @click="del(i)"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+    let v = new Vue({
+            el: "body>div",
+            data: {
+                isLogin:false,
+                nameList:["长覅","护膝"],
+                newName:"",
+            },
+            methods: {
+                login() {
+                    v.isLogin=true;
+                },
+                loginOut(){
+                  v.isLogin=false;
+                },
+                add(){
+                    v.arr.push(v.newName);
+                },
+                del(i){
+                    v.nameList.splice(i,1);
+                }
+            }
+        }
+    )
+</script>
+</html>

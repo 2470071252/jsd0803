@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <el-page-header
+            style="background-color: #0095d7;color: white;
+                    line-height: 60px"
+            @back="goBack" content="修改轮播图">
+    </el-page-header>
+    <img :src="oldUrl" width="100"  alt="">
+    <el-upload
+            action="/upload"
+            name="pic"
+            limit="1"
+            list-type="picture-card"
+            :on-success="handleSuccess"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+        <i class="el-icon-plus"></i>
+    </el-upload>
+    <el-dialog :visible.sync="dialogVisible">
+        <img width="100%" :src="dialogImageUrl" alt="">
+    </el-dialog>
+    <el-button type="success" @click="update()">修改轮播图</el-button>
+
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                dialogImageUrl: '',
+                dialogVisible: false,
+                url:"",  //记录上传成功的图片路径
+                oldUrl:""
+            }
+        },
+        methods: {
+            goBack(){
+                history.back();//返回上一页面
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+
+                axios.get("/remove?url="+v.url).then(function(response){
+                    v.$message("删除成功!");
+                    //删除后url 应该清空  代表没有选择上传的图片
+                    v.url="";
+                })
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            handleSuccess(response,file,fileList){
+                //file.response得到服务器上传成功后相应的图片路径
+                v.url=file.response;
+            },
+            update(){
+                if (v.url==""){
+                    v.$message("请选择上传的图片!");
+                    return;
+                }
+                //发出修改轮播图的请求  id url     ?id=5
+                //得到需要修改的轮播图id
+                let id = location.search.split("=")[1];
+                //把id和url封装到对象中
+                let banner ={id:id,url:v.url};
+                axios.post("/banner/update",banner).then(function () {
+                    //返回后台管理页面
+                    location.href="/admin.html";
+                })
+
+            }
+        },
+        created:function () {
+            //发请求通过地址栏中的id获取对应的图片路径
+            axios.get("/banner/selectById"+location.search).then(function (response) {
+                v.oldUrl = response.data;
+            })
+        }
+    })
+</script>
+</html>

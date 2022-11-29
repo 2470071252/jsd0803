@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10选择器续</title>
+    <style>
+        /*子孙后代选择器*/
+/*        body div div p{color: red}*/
+        /*子元素选择器*/
+        body>div>div>p{
+            color: red;
+        }
+        /*伪类选择器，选择的是元素的状态，包括：未访问、访问过、悬停、点击
+        格式：a:link未访问/visited访问过/hover悬停/active点击
+        */
+        a:link link{color: red}
+        a:visited{color: green}
+        a:hover{color: yellow}
+        a:active{color: blue}
+
+    </style>
+</head>
+<body>
+<a href="01本文相关.html">超链接1</a>
+<a href="02简历练习.html">超链接2</a>
+<a href="03图片标签.html">超链接3</a>
+<hr>
+<p>p1</p>
+<div><p>p2</p></div>
+<div>
+     <div><p>p3</p></div>
+     <div>
+        <div><p>p4</p></div>
+     </div>
+</div>
+</body>
+</html>

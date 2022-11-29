@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02颜色和背景</title>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <style>
+        h1{
+            color: red;
+            color: #00ff00;
+            color: #f00;
+            color:rgb(0,255,0);
+            color: rgba(255,0,0,0.5);
+        }
+        #d1{
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+            background-image: url("../111.png" );
+            background-size: 50px auto;
+            background-repeat: no-repeat;/*禁止重复*/
+            /*设置背景图片的位置：横向偏移值，纵向偏移值*/
+           /* background-position:50px 50px;*/
+            /*设置背景图片的位置：横向百分比，纵向百分比*/
+            background-position:0% 100%;
+        }
+        #d2{
+            width: 611px;
+            height: 376px;
+            /* border: 1px solid yellow; */
+            margin-right: 10px;
+            background-size: 318px 319px;
+            background: #E8E8E8 url("http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img1.png") no-repeat 90% 80%;
+            display: inline-block;
+        }
+        #d3{
+            width: 375px;
+            height: 376px;
+            background-size: 292px 232px;
+            background: #E8E8E8 url("http://doc.canglaoshi.org/tstore_v1/images/itemCat/study_computer_img2.png" ) no-repeat 90% 80%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="d1"></div>
+<div id="d2"></div>
+<div id="d3"></div>
+<h1>颜色测试</h1>
+
+
+</div>
+</body>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</html>

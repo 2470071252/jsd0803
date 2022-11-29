@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.9/theme-chalk/index.css">
+</head>
+<body>
+<h1>添加商品</h1>
+<div id="app">
+    <el-input v-model="p.title" placeholder="请输入商品名"></el-input>
+    <el-input v-model="p.price" placeholder="请输入价格"></el-input>
+    <el-input v-model="p.num" placeholder="请输入库存"></el-input>
+    <el-button type="primary" @click="add()">添加</el-button>
+</div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!-- import Vue before Element -->
+<script src="https://cdn.staticfile.org/vue/2.6.14/vue.min.js"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.staticfile.org/element-ui/2.15.9/index.min.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                p:{title:"",price:"",num:""},
+            }
+        },
+        methods: {
+            add(){
+                axios.post("/add",v.p).then(function (response) {
+                    if (response.data == 1) {
+                       alert("添加成功");
+                       location.href="/";
+                    }else {
+                        alert("商品已存在")
+                        location.reload();
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/testmaven/pom.xml" />
+        <option value="$PROJECT_DIR$/boot01/pom.xml" />
+        <option value="$PROJECT_DIR$/boot01_1/pom.xml" />
+        <option value="$PROJECT_DIR$/boot01_2/pom.xml" />
+        <option value="$PROJECT_DIR$/boot02/pom.xml" />
+        <option value="$PROJECT_DIR$/boo02_1/pom.xml" />
+        <option value="$PROJECT_DIR$/boot3/pom.xml" />
+        <option value="$PROJECT_DIR$/boot02_1/pom.xml" />
+        <option value="$PROJECT_DIR$/boot03/pom.xml" />
+        <option value="$PROJECT_DIR$/boot03_1/pom.xml" />
+        <option value="$PROJECT_DIR$/teacherMangementSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/teacherManagementSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/employMangementSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/boot04/pom.xml" />
+        <option value="$PROJECT_DIR$/boot05/pom.xml" />
+        <option value="$PROJECT_DIR$/boot06/pom.xml" />
+        <option value="$PROJECT_DIR$/boot07/pom.xml" />
+        <option value="$PROJECT_DIR$/boot08/pom.xml" />
+        <option value="$PROJECT_DIR$/boot08_1/pom.xml" />
+        <option value="$PROJECT_DIR$/boot08_2/pom.xml" />
+        <option value="$PROJECT_DIR$/boot09/pom.xml" />
+        <option value="$PROJECT_DIR$/boot10/pom.xml" />
+        <option value="$PROJECT_DIR$/boot101/pom.xml" />
+        <option value="$PROJECT_DIR$/boot102/pom.xml" />
+        <option value="$PROJECT_DIR$/boot103/pom.xml" />
+        <option value="$PROJECT_DIR$/boot11/pom.xml" />
+        <option value="$PROJECT_DIR$/boot111/pom.xml" />
+        <option value="$PROJECT_DIR$/weibo/pom.xml" />
+        <option value="$PROJECT_DIR$/weibo01/pom.xml" />
+        <option value="$PROJECT_DIR$/boot112/pom.xml" />
+        <option value="$PROJECT_DIR$/weibo02/pom.xml" />
+        <option value="$PROJECT_DIR$/coolshark/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

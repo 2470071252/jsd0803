@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</head>
+<body>
+<table border="1" class="table">
+    <caption>个人信息</caption>
+    <tbody class="table-striped">
+    <tr>
+        <td>照片：</td>
+        <td id="head_id"></td>
+    </tr>
+
+    <tr>
+        <td>名字：</td>
+        <td id="name_id"></td>
+    </tr>
+
+    <tr>
+        <td>年龄：</td>
+        <td id="age_id"></td>
+    </tr>
+
+    <tr>
+        <td>好友：</td>
+        <td id="friend_id"></td>
+    </tr>
+    </tbody>
+
+</table>
+<input type="button" value="请求数据" onclick="f()">
+<script>
+    let pic = document.querySelector("#head_id");
+    let name = document.querySelector("#name_id");
+    let age = document.querySelector("#age_id");
+    let friend = document.querySelector("#friend_id");
+    function f() {
+        // 模拟从服务器请求到数据
+        let person = {pic: "../111.png", name: '苍老师', age: "18", friend_list: ["范传奇", "王克晶", "火柴人", "西施", "貂蝉"]};
+        // 得到页面中的元素对象
+        let img = document.createElement("img");
+        img.src = person.pic;
+        pic.append(img);
+        name.append(person.name);
+        age.append(person.age);
+        let ul = document.createElement("ul");
+        for (let friend of person.friend_list) {
+            let li = document.createElement("li");
+            li.innerText = friend;
+            ul.append(li);
+        }
+        friend.append(ul);
+    }
+</script>
+</body>
+</html>

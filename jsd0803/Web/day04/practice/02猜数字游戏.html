@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" placeholder="请输入数字">
+<input type="button" value="猜一猜" onclick="f()">
+<div></div>
+</body>
+<script>
+    let i = document.querySelector("input")
+    let d = document.querySelector("div")
+    let number = parseInt((Math.random() * 100) + 1);
+    let mount = 0;
+    console.log(number);
+
+    function f() {
+        mount++;
+        if (isNaN(i.value)) {
+            return;
+        }
+        if (number < i.value) {
+            d.innerText = "猜大了";
+        } else if (number > i.value) {
+            d.innerText = "猜小了"
+        } else
+            d.innerText = "猜" + mount + "次，猜对了！"
+    }
+</script>
+</html>

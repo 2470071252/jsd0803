@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+</head>
+<body>
+<div>
+    <hr>
+    <table border="1">
+        <caption>商品列表</caption>
+        <tr>
+            <th>id</th>
+            <th>商品名</th>
+            <th>价格</th>
+            <th>库存</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="p in arr">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.num}}</td>
+            <td>
+                <a :href="'/update.html?id='+p.id">修改</a>
+                <a href="javascript:void(0)" @click="del(p.id)">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<!--引入CDN服务器上面的Vue.js框架文件-->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+  let v = new Vue({
+            el:"body>div",
+            data:{
+                arr:[],
+            },
+            methods:{
+                del(id){
+                    if (confirm("确认删除此商品？")) {
+                        axios.get("/delete?id="+id).then(function () {
+                            alert("删除成功！")
+                            location.reload();
+                        })
+                    }
+                },
+            },
+      created:function () {
+          axios.get("/list").then(function (response) {
+              v.arr=response.data;
+          })
+      },
+          }
+  )
+</script>
+</body>
+</html>
